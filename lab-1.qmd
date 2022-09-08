@@ -52,11 +52,25 @@ labs(
 
 ## Exercise 3
 
-(Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+In the plot from exercise 2, the scatter is more concentrated in between 10 and
+20 % college educated. There is an outlier around the 50% college educated. 
 
 ## Exercise 4
-```{r}
 
+I think I prefer this new graph from excericise 4. It seems clearer and easier
+to understand the most important information. I bet it depends on the situation,
+though. 
+```{r}
+#| label: Ex-4, using facet_wrap
+
+ggplot(midwest, aes( x= percollege, y= percbelowpoverty, color= state ) ) +
+  geom_smooth( se= FALSE, show.legend= TRUE) +
+labs(
+    x= "Percent College Educated",
+    y = "Percent Below Poverty",
+    title = "Percollege vs. Percbelowpoverty")+
+  facet_wrap('state')
+  
 ```
 
 
