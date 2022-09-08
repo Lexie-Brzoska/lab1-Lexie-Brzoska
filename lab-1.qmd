@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "Lexie Brzoska"
 format: pdf
 editor: visual
 ---
@@ -12,27 +12,68 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+library(viridis)
 ```
 
 ## Exercise 1
 
-(Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+The histogram has a right skew and does have some outliers nearing the 100,000
+population density.
+```{r}
+#| label: Histogram for population density of counties
+
+ggplot(midwest) +
+  geom_histogram( aes( popdensity ), binwidth = 10000) +
+  labs(
+    x= "Pop Density",
+    y = "Count",
+    title = "Pop Density in each County",
+  )
+
+```
+
 
 ## Exercise 2
 
-(Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+#| label: Scatterplot for the percentage of people with a college degree (percollege) versus percentage below poverty (percbelowpoverty)
+
+ggplot(midwest, aes( x= percollege, y= percbelowpoverty, color= state ) ) +
+  geom_point(show.legend= TRUE) +
+labs(
+    x= "Percent College Educated",
+    y = "Percent Below Poverty",
+    title = "Percollege vs. Percbelowpoverty")
+  
+
+
+```
+
 
 ## Exercise 3
 
 (Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
 ## Exercise 4
+```{r}
+
+```
 
 
 ## Exercise 5
+```{r}
+
+```
 
 
 ## Exercise 6
+```{r}
+
+```
 
 
 ## Exercise 7
+```{r}
+
+```
+
