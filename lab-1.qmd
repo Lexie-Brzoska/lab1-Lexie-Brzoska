@@ -3,6 +3,8 @@ title: "Lab 1 - Data visualization"
 author: "Lexie Brzoska"
 format: pdf
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Load Packages
@@ -75,19 +77,56 @@ labs(
 
 
 ## Exercise 5
-```{r}
+From this graph I can see that IN and OH both have the smallest counties. However,
+there isn't a drastic difference in the number between the states and sizes of their
+counties. WI ends up having the largest county size. I know because their centralized
+data is overall higher than the others. 
 
+```{r}
+#| label: Ex-5, side-by-side box plots
+
+library(ggplot2)
+ggplot(midwest, aes( x= state, y= area, fill = state) ) +
+  geom_boxplot( show.legend= TRUE, alpha=.5) +
+labs(
+    x= "State",
+    y = "Area",
+    title = "Area vs.County by State")
 ```
 
 
 ## Exercise 6
-```{r}
 
+Looking at the plot, the percentage of counties in metro areas is highest in Indiana and Ohio. Additionally, pretty much all counties have fewer in metro areas. 
+```{r}
+#| label: Ex-6, Segmented bar graph
+
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No")) 
+ggplot(midwest, 
+       aes( x= state, fill = metro) ) +
+  geom_bar( position = "fill") +
+labs(
+    x= "State",
+    y = "% of Counties",
+    title = "States vs. Counties in the Metro")
 ```
 
 
 ## Exercise 7
 ```{r}
+#| label: Ex-7
 
+
+ggplot(midwest,
+       aes( x= percollege, y= popdensity, color = percbelowpoverty) ) +
+  geom_point( size = 2, alpha=.5) +
+ facet_wrap('state')+
+labs(
+    x= "% College Educated",
+    y = "Population Density (person/unit area)",
+    title = "Do people with college degrees tend to live in denser areas?", 
+    color= "% below \npoverty line") +
+  theme_minimal()
 ```
 
