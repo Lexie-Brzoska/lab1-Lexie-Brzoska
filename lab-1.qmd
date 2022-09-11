@@ -10,8 +10,8 @@ editor_options:
 ## Load Packages
 
 ```{r}
-#| label: load-packages
-#| message: false
+#1 label: load-packages
+#1 message: false
 
 library(tidyverse)
 library(viridis)
@@ -22,7 +22,7 @@ library(viridis)
 The histogram has a right skew and does have some outliers nearing the 100,000
 population density.
 ```{r}
-#| label: Histogram for population density of counties
+#2 label: Histogram for population density of counties
 
 ggplot(midwest) +
   geom_histogram( aes( popdensity ), binwidth = 10000) +
@@ -38,7 +38,7 @@ ggplot(midwest) +
 ## Exercise 2
 
 ```{r}
-#| label: Scatterplot for the percentage of people with a college degree (percollege) versus percentage below poverty (percbelowpoverty)
+#3 label: Scatterplot for the percentage of people with a college degree (percollege) versus percentage below poverty (percbelowpoverty)
 
 ggplot(midwest, aes( x= percollege, y= percbelowpoverty, color= state ) ) +
   geom_point(show.legend= TRUE) +
@@ -63,7 +63,7 @@ I think I prefer this new graph from excericise 4. It seems clearer and easier
 to understand the most important information. I bet it depends on the situation,
 though. 
 ```{r}
-#| label: Ex-4, using facet_wrap
+#4 label: Ex-4, using facet_wrap
 
 ggplot(midwest, aes( x= percollege, y= percbelowpoverty, color= state ) ) +
   geom_smooth( se= FALSE, show.legend= TRUE) +
@@ -83,7 +83,7 @@ counties. WI ends up having the largest county size. I know because their centra
 data is overall higher than the others. 
 
 ```{r}
-#| label: Ex-5, side-by-side box plots
+#5 label: Ex-5, side-by-side box plots
 
 library(ggplot2)
 ggplot(midwest, aes( x= state, y= area, fill = state) ) +
@@ -99,7 +99,7 @@ labs(
 
 Looking at the plot, the percentage of counties in metro areas is highest in Indiana and Ohio. Additionally, pretty much all counties have fewer in metro areas. 
 ```{r}
-#| label: Ex-6, Segmented bar graph
+#6 label: Ex-6, Segmented bar graph
 
 midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No")) 
@@ -115,7 +115,7 @@ labs(
 
 ## Exercise 7
 ```{r}
-#| label: Ex-7
+#7 label: Ex-7, replicating scatterplot
 
 
 ggplot(midwest,
